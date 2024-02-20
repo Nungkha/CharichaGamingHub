@@ -1,0 +1,70 @@
+{% load static %}
+
+<nav class="navbar fixed-top navbar-expand-md navbar-light bg-light shadow-sm">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url "landing_page" %}">Charicha</a>
+    <!-- Toggle button -->
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+    <!-- left navbar links-->
+
+    <div class="collapse navbar-collapse justify-content-around" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            {% if request.user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url "home" %}">Feed</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url "game-list" %}">Games</a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link" href="#">Spaces</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url "tournament" %}">Tournament</a>
+          </li>
+        </ul>
+        {% endif %}
+        {% if request.user.is_authenticated %}
+    <!-- middle navbar item search-->
+
+        <ul class="navbar-nav mb-2 mb-lg-2">
+    <!-- d-lg-inline d-none: will be displayed as an inline element on screens that are large (lg) and larger-->
+            <li class="nav-item d-lg-inline d-none ">  
+                <form class="d-inline-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </li>
+        </ul>
+        
+    <!-- right navbar links-->
+
+        <ul class="navbar-nav mb-2 mb-lg-2">
+            <li class="nav-item dropdown ms-2 d-none d-md-inline">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <img src="{{user.profile.image.url}}" alt="" class="rounded-circle" width="40" height="40">
+                  {{request.user.username}}
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="{% url "profile" %}">Profile</a></li>
+                  <li><a class="dropdown-item" href="#">Settings</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="{% url "account_logout" %}">Logout</a></li>
+                </ul>
+              </li>
+        </ul>
+        {% else %}
+        <ul class="ms-auto navbar-nav mb-2 mb-lg-2">
+          <a class=" nav-item btn btn-primary mx-3" href="{% url "account_login" %}">Login</a>
+        </ul>
+        {% endif %}
+      </div>
+    </div>
+  </nav>
+
+  {% include "messages.html" %}

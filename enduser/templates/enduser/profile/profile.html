@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<style>
+    .profile-card {
+        width: 100%%;
+        margin: 0 auto;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .profile-card img {
+        width: 100%;
+        height: auto;
+        {% comment %} border-top-left-radius: 10px;
+        border-top-right-radius: 10px; {% endcomment %}
+    }
+    .profile-card .card-body {
+        padding: 15px;
+    }
+    .profile-card .card-title {
+        margin-bottom: 10px;
+    }
+    .profile-card .card-text {
+        margin-bottom: 15px;
+    }
+    .profile-card .btn {
+        margin-top: 10px;
+    }
+</style>
+
+<div class="container">
+    <div class="profile-card">
+        <img src="{{user.profile.cover_photo.url}}" alt="Cover picture">
+        <div class="card-body">
+            <h5 class="card-title">{{ profile.user.username }}</h5>
+            <p class="card-text">Active now. Signed up 3 months ago</p>
+            <p class="card-text">0% Winrate</p>
+            <p class="card-text">1 O Reputation</p>
+            <button class="btn btn-primary">Upload banner</button>
+        </div>
+    </div>
+</div>
+
+
+
+{% comment %} <h1>User Profile</h1>
+<p>Username: {{ profile.user.username }}</p>
+<p>Email: {{ profile.user.email }}</p>
+<p>Full Name: {{ profile.first_name }} {{ profile.last_name }}</p>
+<p>Bio: {{ profile.bio }}</p>
+<p>User type: {{ profile.user.user_type }}</p> {% endcomment %}
+<a href="{% url "update_profile"  %}">Update</a>
+
+
+{% endblock content %}

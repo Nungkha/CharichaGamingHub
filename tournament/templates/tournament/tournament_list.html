@@ -1,0 +1,18 @@
+{% extends "base.html" %} 
+{% load static %}
+
+
+
+{% block title %}Tournament{% endblock %} 
+
+{% block content %}
+<h1>Available Tournament</h1>
+<ul>
+    {% for tournament in object_list %}
+        <li>{{ tournament.name }} - {{ tournament.game }} {{ tournament.status}}</li>
+    {% empty %}
+        <li>No Tournament yet.</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

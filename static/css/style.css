@@ -1,0 +1,68 @@
+@import url(//fonts.googleapis.com/css?family=Muli);
+
+
+
+/* Navbar styles */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    /* Ensure the navbar is above other content */
+}
+
+/* Main content and sidebar styles */
+#main-content {
+    margin-top: 60px;
+    /* Adjust based on the height of your navbar */
+}
+
+#sidebar {
+    position: fixed;
+    top: 60px;
+    /* Adjust based on the height of your navbar */
+    bottom: 0;
+    overflow-y: auto;
+    /* Enable vertical scrolling if sidebar height exceeds viewport */
+    z-index: 900;
+    /* Ensure the sidebar is below the navbar */
+}
+
+
+
+/* main body and side body */
+.main-content {
+    width: 83%;
+    margin: 0 auto;
+    /* Center the main content */
+}
+
+/* main body and side body end */
+
+
+/* game cards */
+.card:hover {
+    width: calc(13rem * 1.05);
+    /* Increase the width of the card by 5% */
+    height: calc(20rem * 1.05);
+    /* Increase the height of the card by 5% */
+}
+
+.card:hover .card-img-top {
+    transform: scale(1.05);
+    /* Increase the size of the image by 5% */
+}
+
+.card-img-top {
+    border-radius: 4%;
+}
+
+/* game cards end */
+
+
+
+/* sidebar */
+
+.sidebar{
+    z-index: 100;
+}

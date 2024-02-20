@@ -1,0 +1,44 @@
+{% load static %}
+
+{% if request.user.is_authenticated %}
+              
+<div  class="col-lg-2 d-none d-lg-block sidebar bg-success pt-5 mt-5 " style="position: fixed; height: 100vh; right: 0; top: 0;">
+    <h1>Sidebar</h1>
+    <div class="container bg-primary">
+      <div class="row">
+        <h4>YOUR ACTIVITIES</h4>
+        <div class="col-sm-3">col-sm-3</div>
+        <div class="col-sm-9">col-sm-9</div>
+      </div>
+      </div>
+      <hr class="hr" />
+      <div class="container bg-secondary">
+        <div class="row">
+          <h4>YOUR TEAMS</h4>
+          <div class="col-3 bg-warning">
+            <a class="nav-link" href="#" >
+              <img src="{{user.profile.image.url}}" alt="" class="rounded-circle bg-pink" width="40" height="40">
+            </a>
+          </div>
+          <div class="col-9 bg-primary">
+            {{request.user.username}}
+          </div>
+        </div>
+        </div>
+
+        <hr class="hr" />
+
+        <div class="container bg-info">
+      <div class="row">
+        <h4>YOUR FRIENDS</h4>
+        <div class="col-3 bg-danger"><a class="nav-link" href="#" >
+          <img src="{{user.profile.image.url}}" alt="" class="rounded-circle bg-secondary" width="60" height="60">
+        </a></div>
+        <div class="col-sm">
+          {{request.user.username}}
+        </div>
+      </div>
+      </div>
+
+    </div>
+  {% endif %}

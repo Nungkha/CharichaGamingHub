@@ -1,0 +1,15 @@
+{% extends "base.html" %} 
+{% load static %}
+
+
+
+{% block title %}Tournament{% endblock %} 
+
+{% block content %}
+<h1>Tournament</h1>
+<ul>
+        <li><a href="{% url "list-tournament" %}">Available Tournament</a></li>
+        <li><a href="{% url "create-tournament" %}">Create Tournament</a></li>
+
+</ul>
+{% endblock %}
