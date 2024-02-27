@@ -37,19 +37,22 @@
     <title>Charicha gaming</title>
     {% endif %}
   </head>
+
   <body>
-    <nav class="sidebar bg-light">
+    <nav class="sidebar close">
       <header>
         <div class="image-text">
           <span class="image">
-            {% comment %} <img src="{% static 'media/default.jpg' %}" alt="logo" /> {% endcomment %}
+            <img src="{% static 'media/default.jpg' %}" alt="logo" />
           </span>
 
-          <div class="text logo-text">
-            <span class="name">Charicha</span>
+          <div class="text header-text">
+            <span class="name">Charicha<br/>Gaming</span>
           </div>
         </div>
+        <i class="bx bx-chevron-right toggle"></i>
       </header>
+
 
       <div class="menu-bar">
         <div class="menu">
@@ -93,25 +96,12 @@
             </li>
 
             <li class="nav-link">
-              {% comment %} <a href="{% url 'contact' %}"> {% endcomment %}
               <a href="#">
                 <i class="bx bx-qr icon"></i>
-                <span class="text nav-text">Spaces</span>
+                <span class="text nav-text">Attendance</span>
               </a>
             </li>
 
-            <li class="nav-link">
-              <a href="#">
-                <i class="bx bx-bell icon"></i>
-                <span class="text nav-text">Team</span>
-              </a>
-            </li>
-            <li class="nav-link">
-              <a href="#">
-                <i class="bx bx-bell icon"></i>
-                <span class="text nav-text">Messages</span>
-              </a>
-            </li>
             <li class="nav-link">
               <a href="#">
                 <i class="bx bx-bell icon"></i>
@@ -120,7 +110,7 @@
             </li>
 
             <li class="nav-link">
-              <a href="{% url "profile" %}">
+              <a href="#">
                 <i class="bx bx-user icon"></i>
                 <span class="text nav-text">Profile</span>
               </a>
@@ -154,6 +144,8 @@
       </div>
     </section>
 
+
+    <script src="{% static 'js/script.js' %}"></script>
 
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"

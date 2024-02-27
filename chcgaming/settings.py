@@ -172,7 +172,7 @@ LOGIN_URL = 'account_login'
 
 LOGOUT_URL = 'account_logout'
 # this is not needed if LogoutView has attribute next_page
-LOGOUT_REDIRECT_URL = 'landing_page'
+LOGOUT_REDIRECT_URL = 'account_login'
 
 ACCOUNT_FORMS = {
     'login': 'enduser.forms.CustomLoginForm',

@@ -1,48 +1,180 @@
 {% load static %}
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% block title %}{% endblock %}</title>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!----======== CSS ======== -->
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+    
+    <!----===== Boxicons CSS ===== -->
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    
+    <!----===== Bootstrap CSS ===== -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    {% if title %}
+    <title>{{title}}</title>
+    {% else %}
+    <title>Charicha gaming</title>
+    {% endif %} 
+</head>
+<body>
 
-    <link href="{% static "css/base.css" %}" rel="stylesheet">
-    {% comment %} <link href="{% static "css/style.css" %}" rel="stylesheet"> {% endcomment %}
+    {% if request.user.is_authenticated %}
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <img src="{% static "images/logo.png" %}" alt="">
+                </span>
 
-  </head>
-  <body>
-
-    <div class="container-fluid">
-      {% include "navbar_nav.html" %}
-
-
-        <div class="row">
-          <!-- Main content-->
-          <div class="col-lg-10 col-sm-12 main-content p-5 mt-5 bg-light " style="overflow: hidden;">
-                <div>
-                  {% block content %}
-                  {% endblock content%}
+                <div class="text logo-text">
+                    <span class="name">Charicha</span>
+                    {% comment %} <span class="profession">Web developer</span> {% endcomment %}
                 </div>
-              </div>
-              
-          <!-- Right sidebar-->
-            {% include "sidebar.html" %}
+            </div>
 
-              </div>
-          </div>
-          
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+
+        <div class="menu-bar">
+            <div class="menu">
+
+                <li class="search-box">
+                    <i class='bx bx-search icon'></i>
+                    <input type="text" placeholder="Search...">
+                </li>
+
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="{% url "home" %}">
+                            <i class='bx bx-home-alt icon' ></i>
+                            <span class="text nav-text">Home</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="{% url "games:game-list" %}">
+                            {% comment %} <i class='bx bx-bar-chart-alt-2 icon' ></i> {% endcomment %}
+                            <i class='bx bx-joystick-alt icon' ></i>
+                            <span class="text nav-text">Games</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-pie-chart-alt icon' ></i>
+                            <span class="text nav-text">Spaces</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-group icon' ></i>
+                            <span class="text nav-text">Team</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="{% url "tournament:tournament" %}">
+                            <i class='bx bx-wallet icon' ></i>
+                            <span class="text nav-text">Tournament</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-message-dots icon' ></i>
+                            <span class="text nav-text">Messages</span>
+                        </a>
+                    </li>
+                    
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-bell icon'></i>
+                            <span class="text nav-text">Notifications</span>
+                        </a>
+                    </li>
+                    
+                    <li class="nav-link">
+                        <a href="{% url "profile" %}">
+                            <i class='bx bx-user icon'></i>
+                            <span class="text nav-text">Profile</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="bottom-content">
+                <li class="">
+                    <a href="{% url "account_logout" %}">
+                        <i class='bx bx-log-out icon' ></i>
+                        <span class="text nav-text">Logout</span>
+                    </a>
+                </li>
+
+                <li class="mode">
+                    <div class="sun-moon">
+                        <i class='bx bx-moon icon moon'></i>
+                        <i class='bx bx-sun icon sun'></i>
+                    </div>
+                    <span class="mode-text text">Dark mode</span>
+
+                    <div class="toggle-switch">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+                
+            </div>
+        </div>
+
+    </nav>
+    {% endif %}
+
+
+
+    <section class="home">
+        <div class="text">
+            
+            <div class="my-5 text-center container">
+                {% if messages %} 
+                    {% for message in messages %}
+                        <div class="alert alert-{{message.tags}}">{{message}}</div>
+                    {% endfor %} 
+                    {% endif %}
+                    {% block content %} {% endblock content %}
+            </div>
+                
+        </div>
+    </section>
+
+
+    <div class="content">
+        {% comment %} {% block content %} {% endblock content %} {% endcomment %}
+
     </div>
 
 
-    {% comment %} {% include "footer.html" %} {% endcomment %}
+    <script src="{% static "js/script.js" %}"></script>
 
+    <script
+    src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+    crossorigin="anonymous"
+    ></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.min.js"
+    integrity="sha384-heAjqF+bCxXpCWLa6Zhcp4fu20XoNIA98ecBC1YkdXhszjoejr5y9Q77hIrv8R9i"
+    crossorigin="anonymous"
+    ></script>
+    
+    {% comment %} <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> {% endcomment %}
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-  </body>
-</html> 
+</body>
+</html>

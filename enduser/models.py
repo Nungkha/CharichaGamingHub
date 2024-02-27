@@ -98,8 +98,8 @@ class Profile(models.Model):
     bio = models.CharField(max_length=200, blank=True, null=True)
     date_of_birth = models.DateField(blank=True, null=True)
     created_at = models.DateTimeField(default = timezone.now)
-    image = models.ImageField(default='default.jpg', upload_to='profile_image') 
-    cover_photo = models.ImageField(default='cover.jpg', upload_to= 'cover_images')
+    image = models.ImageField(default='default.jpg', upload_to='user/profile') 
+    cover_photo = models.ImageField(default='default_cover.png', upload_to= 'user/cover')
 
     def __str__(self):
         return f"{self.user.username} Profile"

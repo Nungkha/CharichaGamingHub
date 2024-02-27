@@ -26,7 +26,7 @@ class LandingPageView(TemplateView):
 
 def profile_view(request):
     profile = Profile.objects.get(user=request.user)
-    return render(request, 'enduser/profile/profile.html', {'profile': profile})
+    return render(request, 'enduser/profile/profile3.html', {'profile': profile})
 
 
 def update_profile(request):
@@ -35,6 +35,7 @@ def update_profile(request):
         form = ProfileUpdateForm(request.POST, request.FILES, instance=profile)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Profile updated successfully!')
             return redirect('profile')
     else:
         form = ProfileUpdateForm(instance=profile)

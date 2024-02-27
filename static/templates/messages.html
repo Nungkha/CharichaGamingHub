@@ -1,9 +1,14 @@
-{% if messages %}
-    <ul class='messages'>
+
+
+<div class="text">
+        
+    <div class="my-5 text-center container">
+      {% if messages %} 
         {% for message in messages %}
-            <div class="alert alert-{{ message.tags }}">
-                {{ messages|safe}}
-            </div>
-        {% endfor %}
-    </ul>
-{% endif %}
+            <div class="alert alert-{{message.tags}}">{{message}}</div>
+        {% endfor %} 
+      {% endif %}
+      
+      {% block content %} {% endblock content %}
+    </div>
+  </div>

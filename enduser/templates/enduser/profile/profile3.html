@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+
+{% block content %}
+<style>
+.profile-container {
+    position: relative;
+    margin: 0px;
+    padding: 0;
+    width: 100%%;
+    height: 100vh;
+}
+
+.profile-cover {
+    top: 0;
+    width: 100%;
+    height: 45vh;
+    object-fit: cover;
+
+}
+#profile-cover {
+    top: 0;
+    width: 100%;
+    height: 45vh;
+    object-fit: cover;
+}
+
+#profile-pic {
+    position: absolute;
+    top: 150px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+}
+
+.profile-name {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.profile-tabs{
+    margin: 20px 50px;
+}
+</style>
+
+
+<div class="profile-container">
+    <div class="profile-cover">
+        <img src="{{user.profile.cover_photo.url}}" alt="Profile cover" id="profile-cover"/>
+        <div class="profile-image">
+            <img src="{{user.profile.image.url}}" alt="Profile picture" id="profile-pic">
+        </div>
+    </div>
+
+    <div class="my-1 text-center container">
+        <h2 class="profile-name">{{user.profile.user.username}}</h2>
+    </div>
+
+    <div class="profile-tabs">
+        <ul class="nav nav-underline">
+            <li class="nav-item">
+              <a class="nav-link " href="#">Overview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="#">Stats</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Teams</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Friends</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="#">Spaces</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="#">Tournaments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="#">Ladders</a>
+            </li>
+            <li class="nav-item ms-auto px-2 bg-dark">
+                <a href="{% url "update_profile"%}" class="nav-link">Settings</a>
+            </li>
+          </ul>
+    </div>
+</div>
+
+{% endblock content%}

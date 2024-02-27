@@ -1,6 +1,11 @@
 {% load static %}
+<style>
+  .navbar {
+      height: 60px; /* Adjust the height as needed */
+  }
+</style>
 
-<nav class="navbar fixed-top navbar-expand-md navbar-light bg-light shadow-sm">
+<nav class="navbar fixed-top navbar-expand-md navbar-light bg-light shadow-sm h-30">
     <div class="container-fluid">
       <a class="navbar-brand" href="{% url "landing_page" %}">Charicha</a>
     <!-- Toggle button -->
@@ -28,26 +33,25 @@
             <a class="nav-link" href="{% url "tournament" %}">Tournament</a>
           </li>
         </ul>
-        {% endif %}
-        {% if request.user.is_authenticated %}
+
     <!-- middle navbar item search-->
 
-        <ul class="navbar-nav mb-2 mb-lg-2">
+        <ul class="navbar-nav">
     <!-- d-lg-inline d-none: will be displayed as an inline element on screens that are large (lg) and larger-->
             <li class="nav-item d-lg-inline d-none ">  
                 <form class="d-inline-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    <input class="form-control m-0" type="search" placeholder="Search" aria-label="Search">
+                    {% comment %} <button class="btn btn-outline-success" type="submit">Search</button> {% endcomment %}
                 </form>
             </li>
         </ul>
         
     <!-- right navbar links-->
 
-        <ul class="navbar-nav mb-2 mb-lg-2">
+        <ul class="navbar-nav">
             <li class="nav-item dropdown ms-2 d-none d-md-inline">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <img src="{{user.profile.image.url}}" alt="" class="rounded-circle" width="40" height="40">
+                  <img src="{{user.profile.image.url}}" alt="" class="rounded-circle" width="30" height="30">
                   {{request.user.username}}
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -67,4 +71,3 @@
     </div>
   </nav>
 
-  {% include "messages.html" %}
