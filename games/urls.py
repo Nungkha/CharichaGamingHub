@@ -5,5 +5,5 @@ app_name = 'games'
 
 urlpatterns = [
     path('list/', views.GameListView.as_view(), name='game-list'),
-    path('<int:year>/<int:month>/<int:day>/<slug:game_slug>/', views.game_detail, name='game_detail'),
+    path('<int:year>/<int:month>/<int:day>/<slug:game>/', views.game_detail, name='game_detail'),
 ]

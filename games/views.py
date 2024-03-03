@@ -3,9 +3,9 @@ from django.views.generic.list import ListView
 from .models import Game
 
 
-def game_detail(request, year, month, day, game_slug):
+def game_detail(request, year, month, day, game):
     game = get_object_or_404(Game,
-                                slug=game_slug,
+                                slug=game,
                                 release_date__year=year,
                                 release_date__month=month,
                                 release_date__day=day)

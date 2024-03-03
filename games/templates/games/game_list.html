@@ -6,16 +6,16 @@
 {% block title %}Game{% endblock %} 
 
 {% block content %}
-<h1>Games</h1>
 
+<h1>Games</h1>
 
 <div class="container">
     <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
         {% for game in object_list %}
             <div class="col mb-5 ">
-                <div class="card border-0 shadow-sm" style="width: 11rem; height: 15rem; transition: width 0.3s, height 0.3s;">
+                <div class="card border-0 shadow-sm " style="width: 11rem; height: 15rem; transition: width 0.3s, height 0.3s;">
                     <a href="{{ game.get_absolute_url }}">
-                        <img src="{{game.thumbnail.url}}" class="card-img-top" alt="" style="width:11rem; height:15rem; object-fit: cover; transition: transform 0.3s;">
+                        <img src="{{ game.thumbnail.url }}" class="card-img-top" alt="" style="width: 11rem; height: 15rem; object-fit: cover; transition: transform 0.3s;">
                         <a class="card-title card-link mt-2">{{game.name}}</a>
                     </a>
                 </div>

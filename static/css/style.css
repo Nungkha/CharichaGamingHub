@@ -44,35 +44,6 @@ body.dark {
     --text-color: #ccc;
 }
 
-/* ===== Game card ===== */
-.card:hover {
-    width: calc(13rem * 1.05);
-    /* Increase the width of the card by 5% */
-    height: calc(20rem * 1.05);
-    /* Increase the height of the card by 5% */
-}
-
-.card:hover .card-img-top {
-    transform: scale(1.05);
-    /* Increase the size of the image by 5% */
-}
-
-.card-img-top {
-    border-radius: 4%;
-}
-
-/* game cards end */
-
-
-h1 {
-    border-bottom: 1px solid #bbb;
-    padding: 0 0 10px 0;
-    margin: 10px 0 20px 0;
-}
-
-.sidebar .menu-bar .menu-links {
-    padding-left: 0%;
-}
 
 
 
@@ -155,12 +126,6 @@ header .image-text .name {
     margin-top: 2px;
     font-size: 18px;
     font-weight: 600;
-}
-
-header .image-text .profession {
-    font-size: 16px;
-    margin-top: -2px;
-    display: block;
 }
 
 .sidebar header .image {
@@ -356,6 +321,3 @@ body.dark .home .text {
     color: var(--text-color);
 }
 
-/* .content {
-    padding:30px 100px;
-} */
