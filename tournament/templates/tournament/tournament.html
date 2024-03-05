@@ -37,7 +37,7 @@
             {% if user_tournaments %}
                 {% for tournament in user_tournaments %}
                     <div class="col mb-4">
-                        <div class="card border-0 shadow-sm " style="width: 18rem; height: 12rem; transition: width 0.3s, height 0.3s;">
+                        <div class="card border-0 shadow-lg " style="width: 18rem; height: 12rem; transition: width 0.3s, height 0.3s;">
                             <a href="{{ tournament.get_absolute_url }}">
                                 {% if tournament.thumbnail %}
                                     <img src="{{ tournament.thumbnail.url }}" class="card-img-top" alt="" style="width: 18rem; height: 12rem; object-fit: cover; transition: transform 0.3s;">

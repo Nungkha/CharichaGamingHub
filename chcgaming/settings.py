@@ -45,6 +45,9 @@ INSTALLED_APPS = [
     'enduser',
     'games',
     'tournament',
+    'post',
+    'space',
+    'team',
     'crispy_forms',
     'crispy_bootstrap5',
 

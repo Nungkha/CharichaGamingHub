@@ -26,7 +26,7 @@ class LandingPageView(TemplateView):
 
 def profile_view(request):
     profile = Profile.objects.get(user=request.user)
-    return render(request, 'enduser/profile/profile3.html', {'profile': profile})
+    return render(request, 'enduser/profile/profile.html', {'profile': profile})
 
 
 def update_profile(request):

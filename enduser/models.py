@@ -100,6 +100,9 @@ class Profile(models.Model):
     created_at = models.DateTimeField(default = timezone.now)
     image = models.ImageField(default='default.jpg', upload_to='user/profile') 
     cover_photo = models.ImageField(default='default_cover.png', upload_to= 'user/cover')
+    
+    follows = models.ManyToManyField(CustomUser,related_name="follows",blank=True)
+    followers = models.ManyToManyField(CustomUser,related_name="followers",blank=True)
 
     def __str__(self):
         return f"{self.user.username} Profile"

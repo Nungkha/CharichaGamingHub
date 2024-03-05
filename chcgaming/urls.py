@@ -9,6 +9,7 @@ urlpatterns = [
     path('', include('enduser.urls')),
     path('games/', include('games.urls', namespace='games')),
     path('tournament/', include('tournament.urls', namespace='tournament')),
+    path('post/', include('post.urls', namespace='post')),
 ]
 
 

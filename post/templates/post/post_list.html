@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row justify-content-center mt-3">
+        <div class="col-md-5 col-sm-12 border-bottom">
+            <h1>Feeds</h1>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt-3 mb-5">
+        <div class="col-md-5 col-sm-12 border-bottom">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form | crispy }}
+                <div class="d-grid gap-2">
+                    <button class="btn btn-success mt-3">Submit!</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    {% for post in post_list %}
+    <div class="row justify-content-center mt-3">
+        <div class="col-md-5 col-sm-12 border-bottom position-relative">
+            <a class="mr-2" href="#">{{ post.author }}</a>
+            <small class="text-muted">{{ post.created_at|date:"F d, Y" }}</small>
+            {% comment %} <p><strong>{{ post.author }}</strong> {{ post.created_at|date:"F d, Y" }}</p> {% endcomment %}
+            <p>{{ post.content }}</p>
+            <a class="stretched-link" href="{{ post.get_absolute_url }}"></a>
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+{% endblock content %}
